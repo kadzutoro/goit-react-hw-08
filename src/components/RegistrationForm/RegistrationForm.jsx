@@ -8,37 +8,38 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link as RouterLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import css from './LoginForm.module.css';
-import { login } from '../../redux/auth/operations';
+import css from './RegistrationForm.module.css';
+import { register } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
 
 const validationSchema = Yup.object({
-    email: Yup.string().email('Invalid email format').required('Required'),
-    password: Yup.string().required('Required'),
-  });
+  name: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid email format').required('Required'),
+  password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
+});
 
-  const defaultTheme = createTheme();
+const defaultTheme = createTheme();
 
-const LoginForm = () => {
-    const dispatch = useDispatch();
+const RegistrationForm = () => {
+  const dispatch = useDispatch();
 
-    const handleSubmit = (values, actions) => {
-        dispatch(login(values))
-          .unwrap()
-          .catch(() =>
-            toast.error(`Oops... Incorrect email or password. Please try again`, {
-              id: 'error',
-            })
-          );
-        actions.resetForm();
-      };
+  const handleSubmit = (values, actions) => {
+    dispatch(register(values))
+      .unwrap()
+      .catch(() =>
+        toast.error('Oops... User or email already exists', {
+          id: 'error',
+        })
+      );
+    actions.resetForm();
+  };
 
-      return (
-        <ThemeProvider theme={defaultTheme}>
+  return (
+    <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -53,16 +54,27 @@ const LoginForm = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Log in
+            Sign up
           </Typography>
           <Box component="div" sx={{ mt: 3 }}>
             <Formik
-              initialValues={{ email: '', password: '' }}
+              initialValues={{ name: '', email: '', password: '' }}
               onSubmit={handleSubmit}
               validationSchema={validationSchema}
             >
               <Form>
                 <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <Field
+                      as={TextField}
+                      autoComplete="given-name"
+                      name="name"
+                      fullWidth
+                      id="name"
+                      label="Name"
+                    />
+                    <ErrorMessage name="name" className={css.error} component="div" />
+                  </Grid>
                   <Grid item xs={12}>
                     <Field
                       as={TextField}
@@ -88,12 +100,12 @@ const LoginForm = () => {
                   </Grid>
                 </Grid>
                 <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-                  Sign In
+                  Sign Up
                 </Button>
                 <Grid container>
                   <Grid item>
-                    <RouterLink className={css.link} to="/register">
-                      {"Don't have an account? Sign Up"}
+                    <RouterLink className={css.link} to="/login">
+                      Already have an account? Log in
                     </RouterLink>
                   </Grid>
                 </Grid>
@@ -103,7 +115,7 @@ const LoginForm = () => {
         </Box>
       </Container>
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export default LoginForm;
+export default RegistrationForm;

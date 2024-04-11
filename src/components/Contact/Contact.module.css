@@ -1,32 +1,50 @@
 .contact {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .info {
-    display: flex;
-    gap: 4px;
-    flex-direction: column;
-  }
-  
-  .name,
-  .number {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  
-  .delete {
-    background-color: #d8dbce;
-    border: none;
-    color: inherit;
-    border-radius: 10px;
-    font-size: 14px;
-    height: 32px;
-    padding: 8px;
-    margin-left: 8px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.data {
+  display: flex;
+  flex-direction: column;
+}
+
+.menuItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  line-height: 0;
+}
+.formBox {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+}
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.formButtonsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.formBtn {
+  line-height: 0;
+  background-color: transparent;
+  border: none;
+}
