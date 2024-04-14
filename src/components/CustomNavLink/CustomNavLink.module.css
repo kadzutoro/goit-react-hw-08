@@ -1,5 +1,5 @@
 .link {
-    transition: all var(--td) var(--ttf);
+    color: aliceblue;
   }
   .isActive {
     color: var(--blue-color);

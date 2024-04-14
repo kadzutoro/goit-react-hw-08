@@ -71,7 +71,7 @@ const UserMenu = () => {
             aria-haspopup="true"
             onClick={handleToggle}
           >
-            <CgProfile size={24} color="#000" />
+            <CgProfile size={24} color="#FFFFFF" />
           </Button>
           <Popper
             open={open}

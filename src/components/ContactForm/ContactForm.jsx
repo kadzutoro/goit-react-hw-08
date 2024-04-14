@@ -17,7 +17,22 @@ const validationSchema = Yup.object().shape({
   number: Yup.string().min(3, 'Too short').max(50, 'Too long').required('Required'),
 });
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#000000',
+      light: '#333333',
+      dark: '#000000',
+      contrastText: '#ffd700',
+    },
+    secondary: {
+      main: '#ffd700',
+      light: '#fff59d',
+      dark: '#c7a500',
+      contrastText: '#000000',
+    },
+  },
+});
 
 const ContactForm = () => {
   const dispatch = useDispatch();

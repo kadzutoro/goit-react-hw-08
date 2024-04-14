@@ -22,7 +22,22 @@ const validationSchema = Yup.object({
   password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
 });
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#000000',
+      light: '#333333',
+      dark: '#000000',
+      contrastText: '#ffd700',
+    },
+    secondary: {
+      main: '#ffd700',
+      light: '#fff59d',
+      dark: '#c7a500',
+      contrastText: '#000000',
+    },
+  },
+});
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
