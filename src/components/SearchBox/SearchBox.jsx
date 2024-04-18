@@ -1,12 +1,12 @@
 import css from './SearchBox.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilter } from '../../redux/filters/slice';
-import { selectFilter } from '../../redux/filters/selectors';
+import { selectNameFilter } from '../../redux/filters/selectors';
 import { TextField } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const SearchBox = () => {
-  const value = useSelector(selectFilter);
+  const value = useSelector(selectNameFilter);
   const dispatch = useDispatch();
 
   const handleChange = e => {

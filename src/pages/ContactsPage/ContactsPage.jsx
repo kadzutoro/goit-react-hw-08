@@ -6,10 +6,10 @@ import ContactForm from '../../components/ContactForm/ContactForm';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import Loader from '../../components/Loader/Loader';
 import ContactList from '../../components/ContactList/ContactList';
-import css from './Contacts.module.css';
+import css from './ContactsPage.module.css';
 import toast from 'react-hot-toast';
 
-const Contacts = () => {
+const ContactsPage = () => {
     const dispatch = useDispatch();
     const loading = useSelector(selectLoading);
     const error = useSelector(selectError);
@@ -36,5 +36,5 @@ const Contacts = () => {
     )
 }
 
-export default Contacts;
+export default ContactsPage;
 
