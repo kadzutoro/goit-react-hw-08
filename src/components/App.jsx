@@ -30,18 +30,9 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route
-              path="/contacts"
-              element={<PrivateRoute component={<ContactsPage />} redirectTo="/login" />}
-            />
-            <Route
-              path="/login"
-              element={<RestrictedRoute component={<Login />} redirectTo="/contacts" />}
-            />
-            <Route
-              path="/register"
-              element={<RestrictedRoute component={<Registration />} redirectTo="/contacts" />}
-            />
+            <Route path="/contacts" element={<PrivateRoute redirectTo="/login"><ContactsPage /></PrivateRoute>} />
+            <Route path="/login" element={<RestrictedRoute redirectTo="/contacts"><Login /></RestrictedRoute>} />
+            <Route path="/register" element={<RestrictedRoute redirectTo="/contacts"><Registration /></RestrictedRoute>} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
