@@ -10,8 +10,8 @@ import Layout from './Layout/Layout';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const ContactsPage = lazy(() => import('../pages/ContactsPage/ContactsPage'));
-const Registration = lazy(() => import('../pages/RegistrationPage'));
-const Login = lazy(() => import('../pages/LoginPage'));
+const RegistrationPage = lazy(() => import('../pages/RegistrationPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
@@ -31,8 +31,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contacts" element={<PrivateRoute redirectTo="/login"><ContactsPage /></PrivateRoute>} />
-            <Route path="/login" element={<RestrictedRoute redirectTo="/contacts"><Login /></RestrictedRoute>} />
-            <Route path="/register" element={<RestrictedRoute redirectTo="/contacts"><Registration /></RestrictedRoute>} />
+            <Route path="/login" element={<RestrictedRoute redirectTo="/contacts"><LoginPage /></RestrictedRoute>} />
+            <Route path="/register" element={<RestrictedRoute redirectTo="/contacts"><RegistrationPage /></RestrictedRoute>} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
